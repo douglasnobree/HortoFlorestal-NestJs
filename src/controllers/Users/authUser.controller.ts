@@ -22,7 +22,7 @@ export class AuthUser {
         
         console.log(body);
         const { username, password } = body;
-        console.log(username, password);
+        console.log('Usuario tentanto se conectar: ', username, ' com senha: ', password)
 
         const user = await this.prisma.user.findUnique({
             where: {
@@ -30,11 +30,14 @@ export class AuthUser {
             },
         });
         if (!user) {
+            console.log('Usuario nao encontrado')
             throw new NotFoundException('User not found');
         }
         if (user.password !== password) {
+            console.log('Senha invalida')
             throw new NotFoundException('Invalid password/email');
         }
+        console.log('Usuario conectado')
         return user;
     }
 }
