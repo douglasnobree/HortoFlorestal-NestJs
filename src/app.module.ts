@@ -3,6 +3,9 @@ import { PrismaService } from './prisma/prisma-service';
 import { AuthUser } from './controllers/Users/authUser.controller';
 import { ConfigModule } from '@nestjs/config';
 import { envSchema } from './env';
+import { listAllPlants } from './controllers/Plants/listAllPlants.controller';
+import { deletePlants } from './controllers/Plants/deletePlants.controller';
+import { createNewPlant } from './controllers/Plants/createNewPlant.controller';
 
 @Module({
     imports: [
@@ -11,7 +14,7 @@ import { envSchema } from './env';
             isGlobal: true,
         }),
     ],
-    controllers: [AuthUser],
+    controllers: [AuthUser, listAllPlants, deletePlants, createNewPlant],
     providers: [PrismaService],
 })
 export class AppModule {}
