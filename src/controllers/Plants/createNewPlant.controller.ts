@@ -5,5 +5,7 @@ export class createNewPlant{
     constructor(private prisma: PrismaService) {}
 
     @Post('/createNewPlant')
-    createNewPlant() {}
+    createNewPlant() {
+        console.log('Criando nova planta')
+    }
 }

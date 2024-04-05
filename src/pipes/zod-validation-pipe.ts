@@ -10,6 +10,8 @@ export class ZodValidationPipe implements PipeTransform {
     constructor(private schema: ZodSchema) {}
 
     transform(value: unknown, metadata: ArgumentMetadata) {
+        console.log('Validando dados recebidos')
+        console.log(value)
         try {
             this.schema.parse(value);
         } catch (error) {
