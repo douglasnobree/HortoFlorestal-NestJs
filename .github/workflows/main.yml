@@ -14,9 +14,7 @@ jobs:
           echo "Host: ${{ secrets.HOST }}"
           echo "Username: ${{ secrets.USERNAME }}"
           echo "SSH Private Key: ${{ secrets.SSH_PRIVATE_KEY }}"
-          # Você também pode usar "echo" para imprimir o conteúdo da chave privada, mas tenha cuidado ao fazer isso,
-          # pois pode expor informações confidenciais no log.
-          # echo "${{ secrets.SSH_PRIVATE_KEY }}"
+
           
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
