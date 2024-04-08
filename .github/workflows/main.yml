@@ -17,6 +17,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            ssh-add ~/.ssh/hortoflorestal
             ls -a
             cd appnest
             git pull
