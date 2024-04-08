@@ -44,6 +44,8 @@ jobs:
             cd appnest
             ls -a
             git pull
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh   
             npm i
             npm run build
             npm run start:prod
