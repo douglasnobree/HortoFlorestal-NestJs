@@ -6,6 +6,7 @@ import { envSchema } from './env';
 import { listAllPlants } from './controllers/Plants/listAllPlants.controller';
 import { deletePlants } from './controllers/Plants/deletePlants.controller';
 import { createNewPlant } from './controllers/Plants/createNewPlant.controller';
+import { lifeProfAPI } from './controllers/apiLifeProff.controller';
 
 @Module({
     imports: [
@@ -14,7 +15,7 @@ import { createNewPlant } from './controllers/Plants/createNewPlant.controller';
             isGlobal: true,
         }),
     ],
-    controllers: [AuthUser, listAllPlants, deletePlants, createNewPlant],
+    controllers: [AuthUser, listAllPlants, deletePlants, createNewPlant, lifeProfAPI],
     providers: [PrismaService],
 })
 export class AppModule {}
