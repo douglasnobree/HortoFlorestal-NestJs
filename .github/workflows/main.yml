@@ -46,6 +46,8 @@ jobs:
             export NPM_CONFIG_PREFIX=~/.npm-global
             export PATH=$PATH:~/.npm-global/bin
             npm run build
-            pm2 restart all
+            pm2 start ecosystem.config.js --only HortoFlorestal
+            pm2 save
+            pm2 restart ecosystem.config.js --only HortoFlorestal
             
 
