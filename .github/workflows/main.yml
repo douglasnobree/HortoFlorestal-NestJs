@@ -43,6 +43,9 @@ jobs:
             cd appnest
             ls -a
             git pull
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            npm install pm2@latest -g
             npm run build
             pm2 restart all
             
