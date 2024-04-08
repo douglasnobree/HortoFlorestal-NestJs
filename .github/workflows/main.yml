@@ -38,13 +38,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            which npm
             eval "$(ssh-agent -s)"
             ssh-add ~/.ssh/hortoflorestal
             cd appnest
             ls -a
             git pull
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh   
-            npm run build
-            npm run start:prod
+
