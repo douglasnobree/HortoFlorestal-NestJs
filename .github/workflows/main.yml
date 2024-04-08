@@ -38,11 +38,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
+            which npm
             eval "$(ssh-agent -s)"
             ssh-add ~/.ssh/hortoflorestal
-            ls -a
             cd appnest
+            ls -a
             git pull
-            /home/runner/.nvm/versions/node/v20.12.1/bin/npm i
-            /home/runner/.nvm/versions/node/v20.12.1/bin/npm run build
-            /home/runner/.nvm/versions/node/v20.12.1/bin/npm run start:prod
+            npm i
+            npm run build
+            npm run start:prod
