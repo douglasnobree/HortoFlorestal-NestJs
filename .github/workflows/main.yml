@@ -13,8 +13,8 @@ jobs:
         with:
           node-version: 20.x
       
-      - name: NPM Install
-        run: npm ci
+      # - name: NPM Install
+      #   run: npm ci
 
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
@@ -29,6 +29,6 @@ jobs:
             ls -a
             cd appnest
             git pull
-            npm i
+            npm ci
             npm run build
             npm run start:prod
