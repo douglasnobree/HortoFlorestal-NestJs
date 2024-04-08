@@ -18,3 +18,5 @@ jobs:
           port: 22
           script: |
             ls -a
+            cd appnest
+            ls -a
