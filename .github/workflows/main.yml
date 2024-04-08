@@ -21,8 +21,13 @@ jobs:
       - name: NPM Install
         run: npm install
 
-      - name: Add npm to PATH
-        run: export PATH="${{ github.workspace }}/node_modules/.bin:$PATH"
+      - name: Setup Node.js
+        run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+          nvm install 20
 
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
