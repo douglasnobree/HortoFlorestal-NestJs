@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    image: hortoflorestalbackend-app:latest 
+    build: .
+    ports:
+      - '3333:3333'
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: 'npm run dev'
