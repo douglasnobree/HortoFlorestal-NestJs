@@ -28,7 +28,7 @@ RUN npx prisma generate
 RUN npm run build
 
 # Exponha a porta em que o servidor NestJS está rodando
-EXPOSE 3000
+EXPOSE 3333
 
 # Comando para iniciar a aplicação
 CMD ["npm", "start:prod"]
