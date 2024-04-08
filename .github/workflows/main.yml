@@ -19,4 +19,4 @@ jobs:
           script: |
             ls -a
             cd appnest
-            ls -a
+            git pull
