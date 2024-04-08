@@ -8,14 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Print secrets
-        run: |
-          echo "Host: ${{ secrets.HOST }}"
-          echo "Username: ${{ secrets.USERNAME }}"
-          echo "SSH Private Key: ${{ secrets.SSH_PRIVATE_KEY }}"
-
-          
+    steps:          
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
         with:
@@ -24,9 +17,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            cd appnest
-            git pull origin master
-            git status
-            npm i
-            npm run build
-            npm run start:prod
+            ls -a
