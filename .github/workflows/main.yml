@@ -27,6 +27,15 @@ jobs:
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
           nvm install 20
           which npm
+          
+      - name: Set NVM and npm config
+        run: |
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
+          export NPM_CONFIG_PREFIX=~/.npm-global
+
+      - name: Install PM2
+        run: npm install pm2@latest -g
 
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
@@ -41,8 +50,6 @@ jobs:
             cd appnest
             ls -a
             git pull
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh
             npm install pm2@latest -g
             npm run build
             pm2 restart all
