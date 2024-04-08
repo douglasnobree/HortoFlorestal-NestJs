@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v1
       
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 20.x
           # Especifique o diretório de instalação do Node.js
@@ -43,6 +43,6 @@ jobs:
             ls -a
             cd appnest
             git pull
-            npm i
-            npm run build
-            npm run start:prod
+            /home/runner/.nvm/versions/node/v20.12.1/bin/npm i
+            /home/runner/.nvm/versions/node/v20.12.1/bin/npm run build
+            /home/runner/.nvm/versions/node/v20.12.1/bin/npm run start:prod
