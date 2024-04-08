@@ -11,10 +11,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 20.x
+          node-version: 16.x
       
-      # - name: NPM Install
-      #   run: npm ci
+      - name: NPM Install
+        run: npm ci
 
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
@@ -29,6 +29,6 @@ jobs:
             ls -a
             cd appnest
             git pull
-            npm ci
+            npm i
             npm run build
             npm run start:prod
