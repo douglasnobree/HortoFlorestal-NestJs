@@ -65,8 +65,7 @@ Usando Docker (Recomendado)
     
 ## Deploy
 
-Estou utilizando o GitHub Actions para fazer o deploy automatico.
-Utilizei o Portrainer, que é um :<completar>. Na GitHub Actions estou fazendo autenticacao com a API do Portrainer, autenticacao com o docker. na step seguinte eu faço a build da imagem da aplicacao, faço o push para o docker hub. e reinicio a stack do Portrainer, assim fazendo o deploy de forma 100% automatica com um simples commit da branch main.
+O deploy é feito automaticamente utilizando o GitHub Actions. Utilizo o Portainer para gerenciar a aplicação. O fluxo de trabalho na GitHub Actions inclui autenticação com a API do Portainer e Docker. A imagem da aplicação é construída, enviada para o Docker Hub e a stack do Portainer é reiniciada, tudo de forma automática com um simples commit na branch main.
 
 ```bash
   commit on branch main
@@ -85,13 +84,13 @@ Utilizei o Portrainer, que é um :<completar>. Na GitHub Actions estou fazendo a
 
 ## Aprendizados
 
-* SSh, aprendi os conceitos principais do ssh, como private key, public key, etc
-* Configurar network VPS, abrir portas, fechar, permitir dns, etc
-* Proxy Reverso: apontar para diferentes dominions com portas diferentes
-* GitHub Actions: fazer acoes automatizadas, como deploy automatico
-* Criar imagens com docker, subir no docker hub, fazer pull
-* Colocar diferentes aplicacoes em um mesmo servidor usando o portraiter
-* diferentes conhecimentos em infra.
+* SSH: conceitos como chaves privadas e públicas
+* Configuração de rede em VPS: abertura e fechamento de portas, configuração de DNS, etc.
+* Proxy Reverso: redirecionamento para diferentes domínios com portas distintas
+* GitHub Actions: automação de ações, como deploy automático
+* Docker: criação de imagens, envio para o Docker Hub, puxar imagens
+* Uso do Portainer para gerenciar múltiplas aplicações em um mesmo servidor
+* Conhecimentos diversos em infraestrutura
 
 ### Autor
 ---
