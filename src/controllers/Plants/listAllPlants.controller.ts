@@ -8,7 +8,7 @@ export class listAllPlants {
     @Get('/listAllPlants')
     @HttpCode(200)
     listplants() {
-        console.log('Listando todas as Plantas')
+        console.log('Listando todas as Plantas');
         return this.prisma.planta.findMany();
     }
 }

@@ -15,7 +15,13 @@ import { lifeProfAPI } from './controllers/apiLifeProff.controller';
             isGlobal: true,
         }),
     ],
-    controllers: [AuthUser, listAllPlants, deletePlants, createNewPlant, lifeProfAPI],
+    controllers: [
+        AuthUser,
+        listAllPlants,
+        deletePlants,
+        createNewPlant,
+        lifeProfAPI,
+    ],
     providers: [PrismaService],
 })
 export class AppModule {}
