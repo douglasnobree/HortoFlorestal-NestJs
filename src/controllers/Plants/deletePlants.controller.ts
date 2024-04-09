@@ -1,9 +1,4 @@
-import {
-    Controller,
-    Delete,
-    HttpException,
-    Query,
-} from '@nestjs/common';
+import { Controller, Delete, HttpException, Query } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma-service';
 
 @Controller('/plants')
