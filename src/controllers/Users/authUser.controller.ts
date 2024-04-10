@@ -37,6 +37,6 @@ export class AuthUser {
         }
         console.log('Usuario conectado')
         const {id} = user;
-        return {message: 'User authenticated', id};
+        return {message: 'Usuario logado!', id};
     }
 }
