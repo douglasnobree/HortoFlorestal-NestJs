@@ -1,5 +1,5 @@
-import { NotFoundException, UsePipes } from '@nestjs/common';
-import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
+import { NotFoundException, UnauthorizedException, UsePipes } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { PrismaService } from 'src/prisma/prisma-service';
 import { z } from 'zod';
@@ -19,8 +19,6 @@ export class AuthUser {
     @HttpCode(200)
     @UsePipes(new ZodValidationPipe(userSchema))
     async login(@Body() body: User) {
-        
-        console.log(body);
         const { username, password } = body;
         console.log('Usuario tentanto se conectar: ', username, ' com senha: ', password)
 
@@ -35,9 +33,10 @@ export class AuthUser {
         }
         if (user.password !== password) {
             console.log('Senha invalida')
-            throw new NotFoundException('Invalid password/email');
+            throw new UnauthorizedException('Invalid password/email');
         }
         console.log('Usuario conectado')
-        return user;
+        const {id} = user;
+        return {message: 'User authenticated', id};
     }
 }
