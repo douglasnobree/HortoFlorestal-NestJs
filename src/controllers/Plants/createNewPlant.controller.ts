@@ -6,6 +6,7 @@ import {
     Post,
     UsePipes,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { PrismaService } from 'src/prisma/prisma-service';
 import { z } from 'zod';
@@ -24,6 +25,7 @@ export class createNewPlant {
     constructor(private prisma: PrismaService) {}
 
     @Post('/createNewPlant')
+    @ApiTags('Plants')
     @HttpCode(201)
     @UsePipes(new ZodValidationPipe(userSchema))
     async createNewPlant(@Body() body: Planta) {

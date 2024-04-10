@@ -1,8 +1,10 @@
 import { NotFoundException, UnauthorizedException, UsePipes } from '@nestjs/common';
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { PrismaService } from 'src/prisma/prisma-service';
 import { z } from 'zod';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 const userSchema = z.object({
     username: z.string(),
@@ -17,6 +19,10 @@ export class AuthUser {
 
     @Post('/login')
     @HttpCode(200)
+    @ApiTags('Users')
+    @ApiOperation({ summary: 'User login' })
+    @ApiResponse({ status: 200, description: 'User logged in successfully' })
+    @ApiResponse({ status: 400, description: 'Bad request type' })
     @UsePipes(new ZodValidationPipe(userSchema))
     async login(@Body() body: User) {
         const { username, password } = body;

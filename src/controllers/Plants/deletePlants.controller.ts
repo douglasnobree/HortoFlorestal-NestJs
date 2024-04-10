@@ -1,4 +1,5 @@
 import { Controller, Delete, HttpException, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { PrismaService } from 'src/prisma/prisma-service';
 
 @Controller('/plants')
@@ -6,6 +7,7 @@ export class deletePlants {
     constructor(private prisma: PrismaService) {}
 
     @Delete('/deletePlant')
+    @ApiTags('Plants')
     async deletePlants(@Query('id') id: string) {
         const idNumber = parseInt(id);
         console.log('Deletando planta com id:', id);
