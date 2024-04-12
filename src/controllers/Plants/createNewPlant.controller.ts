@@ -16,6 +16,11 @@ const userSchema = z.object({
     especie: z.string(),
     descricao: z.string(),
     img_url: z.string(),
+    localizacao: z.string(),
+    floracao: z.string(),
+    curiosidades: z.string(),
+    cuidados: z.string(),
+    rega: z.string(),
 });
 
 type Planta = z.infer<typeof userSchema>;
