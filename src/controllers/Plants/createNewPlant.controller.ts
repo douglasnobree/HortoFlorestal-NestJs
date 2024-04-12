@@ -20,7 +20,7 @@ const userSchema = z.object({
     floracao: z.string(),
     curiosidades: z.string(),
     cuidados: z.string(),
-    rega: z.string(),
+    rega: z.string()
 });
 
 type Planta = z.infer<typeof userSchema>;
@@ -34,7 +34,7 @@ export class createNewPlant {
     @HttpCode(201)
     @UsePipes(new ZodValidationPipe(userSchema))
     async createNewPlant(@Body() body: Planta) {
-        const { nome, especie, descricao, img_url } = body;
+        const { nome, especie, descricao, img_url, localizacao, floracao, curiosidades, cuidados, rega } = body;
         try {
             const newPlant = await this.prisma.planta.create({
                 data: {
@@ -42,6 +42,11 @@ export class createNewPlant {
                     especie: especie,
                     descricao: descricao,
                     img_url: img_url,
+                    localizacao: localizacao,
+                    floracao: floracao,
+                    curiosidades: curiosidades,
+                    cuidados: cuidados,
+                    rega: rega
                 },
             });
             return { message: 'Nova planta criada com sucesso', newPlant };
