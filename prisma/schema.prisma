@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
@@ -9,11 +9,16 @@ datasource db {
 }
 
 model Planta {
-  id        Int    @id @default(autoincrement())
-  nome      String
-  especie   String
-  descricao String
-  img_url   String
+  id           Int     @id @default(autoincrement())
+  nome         String
+  especie      String
+  descricao    String
+  img_url      String
+  localizacao  String?
+  floracao     String?
+  curiosidades String?
+  cuidados     String?
+  rega         String?
 }
 
 model User {

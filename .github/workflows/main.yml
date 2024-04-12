@@ -36,8 +36,8 @@ jobs:
           -d '{}' \
           "https://portainer.cactustheca.shop/api/stacks/3/stop?endpointId=1"
       
-      - name: Wait 10 seconds
-        run: sleep 10s
+      - name: Wait 5 seconds
+        run: sleep 5s
       
       - name: Start containers in Portainer
         run: |

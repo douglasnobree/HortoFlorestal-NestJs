@@ -6,6 +6,7 @@ import { envSchema } from './env';
 import { listAllPlants } from './controllers/Plants/listAllPlants.controller';
 import { deletePlants } from './controllers/Plants/deletePlants.controller';
 import { createNewPlant } from './controllers/Plants/createNewPlant.controller';
+import { listPlantByID } from './controllers/Plants/listPlantbyID.controller';
 
 
 @Module({
@@ -20,6 +21,7 @@ import { createNewPlant } from './controllers/Plants/createNewPlant.controller';
         listAllPlants,
         deletePlants,
         createNewPlant,
+        listPlantByID
 
     ],
     providers: [PrismaService],
