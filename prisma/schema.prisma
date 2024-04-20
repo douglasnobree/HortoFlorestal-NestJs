@@ -9,16 +9,21 @@ datasource db {
 }
 
 model Planta {
-  id           Int     @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   nome         String
   especie      String
   descricao    String
   img_url      String
-  localizacao  String?
-  floracao     String?
-  curiosidades String?
   cuidados     String?
+  curiosidades String?
+  floracao     String?
+  localizacao  String?
   rega         String?
+  frutifera    Boolean?
+  medicinal    Boolean?
+  ornamental   Boolean?
+  tipo         String?
+  utilidade    String?
 }
 
 model User {
