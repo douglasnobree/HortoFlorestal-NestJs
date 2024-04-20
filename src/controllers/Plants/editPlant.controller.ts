@@ -21,7 +21,12 @@ const userSchema = z.object({
     floracao: z.string(),
     curiosidades: z.string(),
     cuidados: z.string(),
-    rega: z.string()
+    rega: z.string(),
+    frutifera: z.boolean(),
+    medicinal: z.boolean(),
+    ornamental: z.boolean(),
+    tipo: z.string(),
+    utilidade: z.string(),
 });
 
 type Planta = z.infer<typeof userSchema>;
@@ -35,13 +40,29 @@ export class editPlant {
     @HttpCode(201)
     @UsePipes(new ZodValidationPipe(userSchema))
     async editPlant(@Body() body: Planta) {
-        const { id, nome, especie, descricao, img_url, localizacao, floracao, curiosidades, cuidados, rega } = body;
+        const {
+            id,
+            nome,
+            especie,
+            descricao,
+            img_url,
+            localizacao,
+            floracao,
+            curiosidades,
+            cuidados,
+            rega,
+            frutifera,
+            medicinal,
+            ornamental,
+            tipo,
+            utilidade,
+        } = body;
         try {
             // Encontrar a planta no banco de dados pelo nome, id ou outra identificação única
             const plantaExistente = await this.prisma.planta.findUnique({
                 where: {
-                    id: id // ou outra condição para identificar a planta
-                }
+                    id: id, // ou outra condição para identificar a planta
+                },
             });
 
             // Verificar se a planta existe
@@ -52,7 +73,7 @@ export class editPlant {
             // Atualizar os campos da planta com os novos valores
             const plantaAtualizada = await this.prisma.planta.update({
                 where: {
-                    id: plantaExistente.id // ou outra condição para identificar a planta
+                    id: plantaExistente.id, // ou outra condição para identificar a planta
                 },
                 data: {
                     nome,
@@ -62,8 +83,14 @@ export class editPlant {
                     cuidados,
                     curiosidades,
                     floracao,
-                    rega
-                }
+                    rega,
+                    localizacao,
+                    frutifera,
+                    medicinal,
+                    ornamental,
+                    tipo,
+                    utilidade,
+                },
             });
 
             return plantaAtualizada;
