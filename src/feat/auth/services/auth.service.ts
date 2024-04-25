@@ -26,7 +26,6 @@ export class AuthService {
         if (user) {
             const payload = { username: user.username};
             const token = this.jwt.sign(payload, { secret: process.env.JWT_SECRET });
-            const a = this.jwt.verify(token);
             return { token: token };
         }
     }

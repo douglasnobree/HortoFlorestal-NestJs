@@ -13,8 +13,8 @@ export class AuthController {
 
     @Post('login')
     @ApiOperation({ summary: 'User login' })
-    @UseGuards(LocalAuthGuard)
     @ApiBody({ type: AuthDto })
+    @UseGuards(LocalAuthGuard)
     async login(@Req() req) {
         const { id, email, username, password } = req.user;
         const data: User = { id, email, username, password };

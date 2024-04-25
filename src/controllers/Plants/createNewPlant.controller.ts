@@ -4,12 +4,15 @@ import {
     Controller,
     HttpCode,
     Post,
+    UseGuards,
     UsePipes,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { PrismaService } from 'src/prisma/prisma-service';
 import { z } from 'zod';
+import { PlantaDto } from '../../feat/plants/dtos/planta-dto';
+import { JwtAuthGuard } from 'src/feat/auth/guards/jwt.guard';
 
 const userSchema = z.object({
     nome: z.string(),
@@ -38,6 +41,9 @@ export class createNewPlant {
     @ApiTags('Plants')
     @HttpCode(201)
     @UsePipes(new ZodValidationPipe(userSchema))
+    @ApiBody({ type: PlantaDto })
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
     async createNewPlant(@Body() body: Planta) {
         const {
             nome,
@@ -72,7 +78,6 @@ export class createNewPlant {
                     ornamental: ornamental,
                     tipo: tipo,
                     utilidade: utilidade,
-
                 },
             });
             return { message: 'Nova planta criada com sucesso', newPlant };

@@ -1,5 +1,6 @@
-import { Controller, Delete, HttpException, Query } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { Controller, Delete, HttpException, Query, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/feat/auth/guards/jwt.guard';
 import { PrismaService } from 'src/prisma/prisma-service';
 
 @Controller('/plants')
@@ -8,6 +9,8 @@ export class deletePlants {
 
     @Delete('/deletePlant')
     @ApiTags('Plants')
+    @ApiBearerAuth()
+    @UseGuards(JwtAuthGuard)
     async deletePlants(@Query('id') id: string) {
         const idNumber = parseInt(id);
         console.log('Deletando planta com id:', id);
