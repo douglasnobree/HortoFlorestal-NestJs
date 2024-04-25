@@ -4,9 +4,11 @@ import {
     Controller,
     HttpCode,
     Put,
+    UseGuards,
     UsePipes,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/feat/auth/guards/jwt.guard';
 import { ZodValidationPipe } from 'src/pipes/zod-validation-pipe';
 import { PrismaService } from 'src/prisma/prisma-service';
 import { z } from 'zod';
@@ -39,6 +41,8 @@ export class editPlant {
     @ApiTags('Plants')
     @HttpCode(201)
     @UsePipes(new ZodValidationPipe(userSchema))
+    @ApiBearerAuth()
+    // @UseGuards(JwtAuthGuard)
     async editPlant(@Body() body: Planta) {
         const {
             id,
@@ -74,7 +78,7 @@ export class editPlant {
             const plantaAtualizada = await this.prisma.planta.update({
                 where: {
                     id: plantaExistente.id, // ou outra condição para identificar a planta
-                },
+                }, 
                 data: {
                     nome,
                     especie,

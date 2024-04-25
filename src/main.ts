@@ -11,8 +11,7 @@ async function bootstrap() {
     .setTitle('Horto Florestal API')
     .setDescription('API para gerenciamento de plantas e usuários do Horto Florestal')
     .setVersion('1.0')
-    .addTag('Users')
-    .addTag('Plants')
+    .addBearerAuth()
     .build();
     
     const document = SwaggerModule.createDocument(app, configSwagger);

@@ -8,7 +8,7 @@ import { deletePlants } from './controllers/Plants/deletePlants.controller';
 import { createNewPlant } from './controllers/Plants/createNewPlant.controller';
 import { listPlantByID } from './controllers/Plants/listPlantbyID.controller';
 import { editPlant } from './controllers/Plants/editPlant.controller';
-
+import { AuthModule } from './feat/auth/auth.module';
 
 @Module({
     imports: [
@@ -16,6 +16,7 @@ import { editPlant } from './controllers/Plants/editPlant.controller';
             validate: (env) => envSchema.parse(env),
             isGlobal: true,
         }),
+        AuthModule,
     ],
     controllers: [
         AuthUser,
@@ -23,8 +24,7 @@ import { editPlant } from './controllers/Plants/editPlant.controller';
         deletePlants,
         createNewPlant,
         listPlantByID,
-        editPlant
-
+        editPlant,
     ],
     providers: [PrismaService],
 })

@@ -16,6 +16,7 @@ jobs:
         run: |
           echo "DATABASE_URL=\"${{ secrets.DATABASE_URL }}\"" > .env &&
           echo "SECRET=\"${{ secrets.SECRET }}\"" >> .env
+          echo "JWT_SECRET\"${{ secrets.PORTAINER_API_TOKEN }}\"" >> .env
       
 
 
