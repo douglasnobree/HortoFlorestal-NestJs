@@ -12,11 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # - name: Create .env file
-      #   run: |
-      #     echo "DATABASE_URL=\"${{ secrets.DATABASE_URL }}\"" > .env &&
-      #     echo "SECRET=\"${{ secrets.SECRET }}\"" >> .env
-      #     echo "JWT_SECRET\"${{ secrets.PORTAINER_API_TOKEN }}\"" >> .env
+      - name: Create .env file
+        run: |
+          echo "DATABASE_URL=\"${{ secrets.DATABASE_URL }}\"" > .env &&
+          echo "SECRET=\"${{ secrets.SECRET }}\"" >> .env
+          echo "JWT_SECRET\"${{ secrets.JWT_SECRET }}\"" >> .env
       
 
 
