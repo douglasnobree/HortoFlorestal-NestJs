@@ -14,9 +14,9 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "DATABASE_URL=\"${{ secrets.DATABASE_URL }}\"" > .env &&
-          echo "SECRET=\"${{ secrets.SECRET }}\"" >> .env
-          echo "JWT_SECRET\"${{ secrets.JWT_SECRET }}\"" >> .env
+          echo "DATABASE_URL="${{ secrets.DATABASE_URL }}"" > .env &&
+          echo "SECRET="${{ secrets.SECRET }}"" >> .env
+          echo "JWT_SECRET="${{ secrets.JWT_SECRET }}"" >> .env
       
 
 
