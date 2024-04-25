@@ -4,6 +4,7 @@ import { LocalAuthGuard } from '../guards/local.guard';
 import { AuthDto } from '../dtos/auth.dtos';
 import { AuthService } from '../services/auth.service';
 import { User } from '@prisma/client';
+import { JwtAuthGuard } from '../guards/jwt.guard';
 
 
 @ApiTags('Auth')
@@ -19,5 +20,12 @@ export class AuthController {
         const { id, email, username, password } = req.user;
         const data: User = { id, email, username, password };
         return this.authService.login(data);
+    }
+
+    @Post('verifyToken')
+    @UseGuards(JwtAuthGuard)
+    async rotaProtegida() {
+        console.log('usuario autenticado');
+        return 'usuario autenticado';
     }
 }
