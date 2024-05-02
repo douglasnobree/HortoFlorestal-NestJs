@@ -21,13 +21,10 @@ const userSchema = z.object({
     img_url: z.string(),
     localizacao: z.string(),
     floracao: z.string(),
-    curiosidades: z.string(),
     cuidados: z.string(),
-    rega: z.string(),
     frutifera: z.boolean(),
     medicinal: z.boolean(),
     ornamental: z.boolean(),
-    tipo: z.string(),
     utilidade: z.string(),
 });
 
@@ -52,13 +49,10 @@ export class createNewPlant {
             img_url,
             localizacao,
             floracao,
-            curiosidades,
             cuidados,
-            rega,
             frutifera,
             medicinal,
             ornamental,
-            tipo,
             utilidade,
         } = body;
         try {
@@ -70,13 +64,10 @@ export class createNewPlant {
                     img_url: img_url,
                     localizacao: localizacao,
                     floracao: floracao,
-                    curiosidades: curiosidades,
                     cuidados: cuidados,
-                    rega: rega,
                     frutifera: frutifera,
                     medicinal: medicinal,
                     ornamental: ornamental,
-                    tipo: tipo,
                     utilidade: utilidade,
                 },
             });
