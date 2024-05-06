@@ -15,14 +15,11 @@ model Planta {
   descricao    String
   img_url      String
   cuidados     String?
-  curiosidades String?
   floracao     String?
   localizacao  String?
-  rega         String?
   frutifera    Boolean?
   medicinal    Boolean?
   ornamental   Boolean?
-  tipo         String?
   utilidade    String?
 }
 

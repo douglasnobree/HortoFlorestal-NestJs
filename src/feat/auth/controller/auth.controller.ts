@@ -25,7 +25,6 @@ export class AuthController {
     @Post('verifyToken')
     @UseGuards(JwtAuthGuard)
     async rotaProtegida() {
-        console.log('usuario autenticado');
-        return 'usuario autenticado';
+        return 'Rota protegida';
     }
 }

@@ -31,6 +31,8 @@ const userSchema = z.object({
     utilidade: z.string(),
 });
 
+
+
 type Planta = z.infer<typeof userSchema>;
 
 @Controller('/plants')
@@ -45,6 +47,7 @@ export class createNewPlant {
     @ApiBearerAuth()
     @UseGuards(JwtAuthGuard)
     async createNewPlant(@Body() body: Planta) {
+        
         const {
             nome,
             especie,

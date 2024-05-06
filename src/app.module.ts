@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from './prisma/prisma-service';
-import { AuthUser } from './controllers/Users/authUser.controller';
 import { ConfigModule } from '@nestjs/config';
 import { envSchema } from './env';
 import { listAllPlants } from './controllers/Plants/listAllPlants.controller';
@@ -19,7 +18,6 @@ import { AuthModule } from './feat/auth/auth.module';
         AuthModule,
     ],
     controllers: [
-        AuthUser,
         listAllPlants,
         deletePlants,
         createNewPlant,
