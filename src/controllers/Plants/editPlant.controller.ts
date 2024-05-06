@@ -22,13 +22,10 @@ const userSchema = z.object({
     img_url: z.string(),
     localizacao: z.string(),
     floracao: z.string(),
-    curiosidades: z.string(),
     cuidados: z.string(),
-    rega: z.string(),
     frutifera: z.boolean(),
     medicinal: z.boolean(),
     ornamental: z.boolean(),
-    tipo: z.string(),
     utilidade: z.string(),
 });
 
@@ -54,32 +51,27 @@ export class editPlant {
             img_url,
             localizacao,
             floracao,
-            curiosidades,
             cuidados,
-            rega,
             frutifera,
             medicinal,
             ornamental,
-            tipo,
             utilidade,
         } = body;
         try {
-            // Encontrar a planta no banco de dados pelo nome, id ou outra identificação única
             const plantaExistente = await this.prisma.planta.findUnique({
                 where: {
-                    id: id, // ou outra condição para identificar a planta
+                    id: id,
                 },
             });
 
-            // Verificar se a planta existe
+
             if (!plantaExistente) {
                 throw new BadRequestException('Planta não encontrada');
             }
 
-            // Atualizar os campos da planta com os novos valores
             const plantaAtualizada = await this.prisma.planta.update({
                 where: {
-                    id: plantaExistente.id, // ou outra condição para identificar a planta
+                    id: plantaExistente.id, 
                 },
                 data: {
                     nome,
@@ -87,14 +79,11 @@ export class editPlant {
                     descricao,
                     img_url,
                     cuidados,
-                    curiosidades,
                     floracao,
-                    rega,
                     localizacao,
                     frutifera,
                     medicinal,
                     ornamental,
-                    tipo,
                     utilidade,
                 },
             });
