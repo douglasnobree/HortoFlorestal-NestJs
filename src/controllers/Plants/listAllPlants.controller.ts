@@ -9,7 +9,6 @@ export class listAllPlants {
     @Get('/listAllPlants')
     @HttpCode(200)
     @ApiTags('Plants')
-
     listplants() {
         console.log('Listando todas as Plantas');
         return this.prisma.planta.findMany();
