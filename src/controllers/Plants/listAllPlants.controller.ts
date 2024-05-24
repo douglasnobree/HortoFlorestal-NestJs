@@ -11,6 +11,10 @@ export class listAllPlants {
     @ApiTags('Plants')
     listplants() {
         console.log('Listando todas as Plantas');
-        return this.prisma.planta.findMany();
+        return this.prisma.planta.findMany({
+            orderBy: {
+                nome: 'asc',
+            },
+        });
     }
 }
